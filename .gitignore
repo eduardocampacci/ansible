@@ -1,0 +1,22 @@
+# Ansible retry files
+*.retry
+
+# Logs
+*.log
+
+# Temporários
+*.tmp
+*.bak
+*.old
+*.swp
+
+# Credenciais e chaves
+*.pem
+*.key
+*.secret
+*.password
+*.creds
+
+# Python/cache
+__pycache__/
+*.pyc
