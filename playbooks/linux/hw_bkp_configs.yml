@@ -33,12 +33,12 @@
 #          target: /root/dump_banco/postgresql/postgresql.sql
 
 
-# Sincronização dos arquivos de paginas web. 
+# Sincronização NOC. 
 - hosts: 192.168.1.4
   user: root
 
   tasks:
-     - name: RSYNC paginas web.
+     - name: RSYNC arquivos containers.
        ansible.posix.synchronize:
            mode: pull
            src: "{{ item.src }}"
@@ -55,9 +55,8 @@
            - {src: '/etc', dest: '/home/eduardo/bkp_servidores/{{ansible_nodename}}'}
            - {src: '/opt', dest: '/home/eduardo/bkp_servidores/{{ansible_nodename}}'}
            - {src: '/home', dest: '/home/eduardo/bkp_servidores/{{ansible_nodename}}'}
-           - {src: '/usr/local', dest: '/home/eduardo/bkp_servidores/{{ansible_nodename}}'}
            - {src: '/root', dest: '/home/eduardo/bkp_servidores/{{ansible_nodename}}'}
-           - {src: '/var/www', dest: '/home/eduardo/bkp_servidores/{{ansible_nodename}}'}
+           - {src: '/var/log', dest: '/home/eduardo/bkp_servidores/{{ansible_nodename}}'}
 
 # Sincronização de todos os arquivos importantes dos servidores
 - hosts: debian proxmox
@@ -77,6 +76,8 @@
            perms: yes
            times: yes
            compress: yes
+           rsync_opts:
+               - "--exclude=/etc/pve/"
        with_items:
            - {src: '/etc', dest: '/home/eduardo/bkp_servidores/{{ansible_nodename}}'}
            - {src: '/opt', dest: '/home/eduardo/bkp_servidores/{{ansible_nodename}}'}
