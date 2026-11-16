@@ -13,17 +13,17 @@
 
    - name: Download pacote bacula DIR.
      get_url:
-             url: https://sourceforge.net/projects/bacula/files/bacula/15.0.2/bacula-15.0.2.tar.gz
+             url: https://sourceforge.net/projects/bacula/files/bacula/15.0.3/bacula-15.0.3.tar.gz
              dest: /root/install/bacula/
 
    - name: Descompactacao pacote bacula DIR.
-     shell: cd /root/install/bacula/ && tar -xvzf bacula-15.0.2.tar.gz
+     shell: cd /root/install/bacula/ && tar -xvzf bacula-15.0.3.tar.gz
 
    - name: Configuracao instalacao bacula DIR.
-     shell: cd /root/install/bacula/bacula-15.0.2/ && ./configure --with-readline=/usr/include/readline --disable-conio --bindir=/usr/bin --sbindir=/usr/sbin --with-scriptdir=/etc/bacula/scripts --with-working-dir=/var/lib/bacula --with-logdir=/var/log --enable-smartalloc --with-postgresql --with-job-email=eduardo.campacci@hwt.ind.br --with-hostname=bacula --with-systemd --enable-build-stored=no
+     shell: cd /root/install/bacula/bacula-15.0.3/ && ./configure --with-readline=/usr/include/readline --disable-conio --bindir=/usr/bin --sbindir=/usr/sbin --with-scriptdir=/etc/bacula/scripts --with-working-dir=/var/lib/bacula --with-logdir=/var/log --enable-smartalloc --with-postgresql --with-job-email=eduardo.campacci@hwt.ind.br --with-hostname=bacula --with-systemd --enable-build-stored=no
 
    - name: Instalacao bacula DIR.
-     shell: cd /root/install/bacula/bacula-15.0.2/ && make -j8 && make install && make install-autostart
+     shell: cd /root/install/bacula/bacula-15.0.3/ && make -j8 && make install && make install-autostart
 
    - name: Reiniciando servicos DIR.
      shell: systemctl restart bacula-dir && systemctl restart bacula-fd
@@ -43,17 +43,17 @@
 
    - name: Download pacote bacula SD.
      get_url:
-             url: https://sourceforge.net/projects/bacula/files/bacula/15.0.2/bacula-15.0.2.tar.gz
+             url: https://sourceforge.net/projects/bacula/files/bacula/15.0.3/bacula-15.0.3.tar.gz
              dest: /root/install/bacula/
 
    - name: Descompactacao pacote bacula SD.
-     shell: cd /root/install/bacula/ && tar -xvzf bacula-15.0.2.tar.gz
+     shell: cd /root/install/bacula/ && tar -xvzf bacula-15.0.3.tar.gz
 
    - name: Configuracao instalacao bacula SD.
-     shell: cd /root/install/bacula/bacula-15.0.2/ && ./configure --bindir=/usr/bin --sbindir=/usr/sbin --with-scriptdir=/usr/libexec/bacula/ --with-working-dir=/var/spool/bacula/ --with-logdir=/var/log --with-postgresql --with-systemd --enable-build-dird=no --enable-build-stored=yes --enable-smartlloc
+     shell: cd /root/install/bacula/bacula-15.0.3/ && ./configure --bindir=/usr/bin --sbindir=/usr/sbin --with-scriptdir=/usr/libexec/bacula/ --with-working-dir=/var/spool/bacula/ --with-logdir=/var/log --with-postgresql --with-systemd --enable-build-dird=no --enable-build-stored=yes --enable-smartlloc
 
    - name: Instalacao bacula SD.
-     shell: cd /root/install/bacula/bacula-15.0.2/ && make -j8 && make install && make install-autostart-sd && make install-autostart-fd
+     shell: cd /root/install/bacula/bacula-15.0.3/ && make -j8 && make install && make install-autostart-sd && make install-autostart-fd
 
    - name: Reiniciando servicos SD.
      shell: systemctl restart bacula-sd && systemctl restart bacula-fd
@@ -73,17 +73,17 @@
 
    - name: Download pacote bacula FD.
      get_url:
-             url: https://sourceforge.net/projects/bacula/files/bacula/15.0.2/bacula-15.0.2.tar.gz
+             url: https://sourceforge.net/projects/bacula/files/bacula/15.0.3/bacula-15.0.3.tar.gz
              dest: /root/install/bacula/
 
    - name: Descompactacao pacote bacula FD.
-     shell: cd /root/install/bacula/ && tar -xvzf bacula-15.0.2.tar.gz
+     shell: cd /root/install/bacula/ && tar -xvzf bacula-15.0.3.tar.gz
 
    - name: Configuracao instalacao bacula FD.
-     shell: cd /root/install/bacula/bacula-15.0.2/ && ./configure --enable-client-only --enable-build-dird=no --enable-build-stored=no --bindir=/usr/bin --sbindir=/usr/sbin --with-scriptdir=/etc/bacula/scripts --with-working-dir=/var/lib/bacula --with-logdir=/var/log --enable-smartalloc
+     shell: cd /root/install/bacula/bacula-15.0.3/ && ./configure --enable-client-only --enable-build-dird=no --enable-build-stored=no --bindir=/usr/bin --sbindir=/usr/sbin --with-scriptdir=/etc/bacula/scripts --with-working-dir=/var/lib/bacula --with-logdir=/var/log --enable-smartalloc
 
    - name: Instalacao bacula FD.
-     shell: cd /root/install/bacula/bacula-15.0.2 && make -j8 && make install && make install-autostart-fd
+     shell: cd /root/install/bacula/bacula-15.0.3 && make -j8 && make install && make install-autostart-fd
 
    - name: Reiniciando servicos FD.
      shell: systemctl restart bacula-fd
